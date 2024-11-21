@@ -1,4 +1,4 @@
-name: Testar GET com fetch
+name: Executar testes
 
 on:
   push:
