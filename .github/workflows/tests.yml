@@ -25,8 +25,10 @@ jobs:
       run: npm install
 
     # Iniciar servidor
-    - name: Iniciar servidor
-      run: node server
+    - name: Iniciar servidor Express
+      run: |
+        nohup node server.js &  # Inicia o servidor em segundo plano
+        sleep 5  # Espera o servidor iniciar corretamente
 
     # PASSO 4: Executar o script de consulta
     - name: Executar o script de tests
