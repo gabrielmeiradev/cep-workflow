@@ -10,19 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # PASSO 1: Checkout do código
+    # Checkout do código
     - name: Checkout do código
       uses: actions/checkout@v3
 
-    # PASSO 2: Configurar Node.js
+    # Configurar Node.js
     - name: Configurar Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '20'
 
-    # PASSO 3: Instalar dependências
+    # Instalar dependências
     - name: Instalar dependências
       run: npm install
+
+    # Iniciar servidor
+    - name: Iniciar servidor
+      run: node server
 
     # PASSO 4: Executar o script de consulta
     - name: Executar o script de tests
