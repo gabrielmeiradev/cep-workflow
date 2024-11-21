@@ -10,18 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Passo 1: Checkout do código
     - name: Checkout do código
       uses: actions/checkout@v3
 
-    # Passo 2: Instalar curl (se necessário)
     - name: Instalar curl
       run: sudo apt-get install -y curl
 
-    # Passo 3: Fazer requisição com curl e validar a resposta
-    - name: Validar resposta da API de CEP
+    - name: Veriicar resposta da API de CEP
       run: |
-        # Fazer requisição e validar o campo 'logradouro'
         resposta=$(curl -s "https://viacep.com.br/ws/08275090/json/")
         if echo "$resposta" | grep -q '"logradouro"'; then
           echo "Validação bem-sucedida!"

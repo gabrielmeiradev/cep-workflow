@@ -1,5 +1,6 @@
 const app = require("express")()
 const { StatusCodes } = require("http-status-codes");
+const axios = require("axios");
 
 const serverMessage = (message, data) => {
     let key = "data";
@@ -24,17 +25,16 @@ app.get("/cep/:cep", async (req, res) => {
     const cepUrl = `https://viacep.com.br/ws/${cep}/json/`   
 
     try {
-        const response = await fetch(cepUrl);
+        const response = await axios.get(cepUrl);
 
-        if(!response.ok) {
-            throw Error("Erro ao fazer requisição")
+        if(response.status != StatusCodes.OK) {
+            throw Error(JSON.stringify(response))
         }
-        const json = await response.json();
         res
             .status(StatusCodes.OK)
             .json(serverMessage(
                 "CEP carregado com sucesso",
-                json
+                response.data
             ))
     } catch (e) {
         res
