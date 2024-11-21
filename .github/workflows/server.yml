@@ -1,4 +1,4 @@
-name: Validando resposta do servidor
+name: Testando API de CEP
 
 on:
   push:

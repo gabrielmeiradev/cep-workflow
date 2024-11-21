@@ -1,4 +1,4 @@
-name: Testando API
+name: Testando API do ViaCep
 
 on:
   push:
