@@ -1,0 +1,29 @@
+name: Testar GET com fetch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+
+    steps:
+    # PASSO 1: Checkout do código
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    # PASSO 2: Configurar Node.js
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    # PASSO 3: Instalar dependências
+    - name: Instalar dependências
+      run: npm install
+
+    # PASSO 4: Executar o script de consulta
+    - name: Executar o script de tests
+      run: npx jest __tests__/compare.test.js

@@ -1,0 +1,21 @@
+{
+  "name": "cep-workflow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "http-status-codes": "^2.3.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "axios": "^1.7.7",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

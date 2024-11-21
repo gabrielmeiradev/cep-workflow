@@ -1,0 +1,40 @@
+name: Testar GET com fetch no server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Instalar dependências
+      run: npm install
+
+    - name: Iniciar servidor Express
+      run: |
+        nohup node server.js &  # Inicia o servidor em segundo plano
+        sleep 5  # Espera o servidor iniciar corretamente
+
+    - name: Testar a consulta de CEP
+      id: test_cep
+      run: |
+        response=$(curl --silent --fail http://localhost:8000/cep/08275090) 
+        echo "Resposta da consulta de CEP: $response"  
+        
+        if echo "$response"; then
+          echo "Validação bem-sucedida!";
+        else
+          echo "Validação falhou!";
+          exit 1;
+        fi
