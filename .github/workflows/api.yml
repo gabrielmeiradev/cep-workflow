@@ -1,4 +1,4 @@
-name: Testar API de CEP
+name: Testando API
 
 on:
   push:
